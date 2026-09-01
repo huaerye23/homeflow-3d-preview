@@ -958,6 +958,7 @@ h1, h2, h3, p, dl, dd, dt, figure { margin: 0; }
   .brand-mark { width: 32px; height: 32px; font-size: 17px; }
   .brand-copy strong { font-size: 19px; }
 
+  .text-button, .primary-button, .view-switch button { position: relative; }
   .btn-label {
     position: absolute;
     width: 1px; height: 1px;
