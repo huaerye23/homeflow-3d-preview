@@ -1,0 +1,250 @@
+{
+  "generatedAt": "2026-08-31T02:32:10.734Z",
+  "url": "http://127.0.0.1:4173/",
+  "checks": [
+    {
+      "label": "desktop-3d",
+      "title": "栖居 · 全屋 3D 设计预览",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "documentSize": {
+        "width": 1440,
+        "height": 900
+      },
+      "horizontalOverflow": 0,
+      "canvas": {
+        "width": 892,
+        "height": 832,
+        "backingWidth": 892,
+        "backingHeight": 832
+      },
+      "webgl": true,
+      "cameraDistance": 25.539,
+      "usableArea": "120.7 m²",
+      "interiorArea": "108.5 m²",
+      "areaBasis": "108.5㎡ 室内 + 12.2㎡ 阳台（不含电梯/公区）",
+      "sidebar": {
+        "left": 0,
+        "right": 272,
+        "width": 272
+      },
+      "roomButtons": 14,
+      "toggles": [
+        {
+          "label": "切换给排水",
+          "checked": "true"
+        },
+        {
+          "label": "切换强弱电",
+          "checked": "true"
+        },
+        {
+          "label": "切换空间标签",
+          "checked": "true"
+        }
+      ]
+    },
+    {
+      "label": "desktop-wheel-zoom",
+      "before": 25.539,
+      "after": 24.636,
+      "stableAfter": 24.863
+    },
+    {
+      "label": "desktop-button-zoom",
+      "before": 25.221,
+      "after": 20.712
+    },
+    {
+      "label": "desktop-plan",
+      "title": "栖居 · 全屋 3D 设计预览",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "documentSize": {
+        "width": 1440,
+        "height": 900
+      },
+      "horizontalOverflow": 0,
+      "canvas": {
+        "width": 892,
+        "height": 832,
+        "backingWidth": 892,
+        "backingHeight": 832
+      },
+      "webgl": true,
+      "cameraDistance": 24.303,
+      "usableArea": "120.7 m²",
+      "interiorArea": "108.5 m²",
+      "areaBasis": "108.5㎡ 室内 + 12.2㎡ 阳台（不含电梯/公区）",
+      "sidebar": {
+        "left": 0,
+        "right": 272,
+        "width": 272
+      },
+      "roomButtons": 14,
+      "toggles": [
+        {
+          "label": "切换给排水",
+          "checked": "true"
+        },
+        {
+          "label": "切换强弱电",
+          "checked": "true"
+        },
+        {
+          "label": "切换空间标签",
+          "checked": "true"
+        }
+      ]
+    },
+    {
+      "label": "plan-wheel-zoom",
+      "before": 24.303,
+      "after": 19.893
+    },
+    {
+      "label": "desktop-room-focus",
+      "title": "栖居 · 全屋 3D 设计预览",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "documentSize": {
+        "width": 1440,
+        "height": 900
+      },
+      "horizontalOverflow": 0,
+      "canvas": {
+        "width": 892,
+        "height": 832,
+        "backingWidth": 892,
+        "backingHeight": 832
+      },
+      "webgl": true,
+      "cameraDistance": 16.933,
+      "usableArea": "120.7 m²",
+      "interiorArea": "108.5 m²",
+      "areaBasis": "108.5㎡ 室内 + 12.2㎡ 阳台（不含电梯/公区）",
+      "sidebar": {
+        "left": 0,
+        "right": 272,
+        "width": 272
+      },
+      "roomButtons": 14,
+      "toggles": [
+        {
+          "label": "切换给排水",
+          "checked": "true"
+        },
+        {
+          "label": "切换强弱电",
+          "checked": "true"
+        },
+        {
+          "label": "切换空间标签",
+          "checked": "true"
+        }
+      ]
+    },
+    {
+      "label": "mobile-375",
+      "title": "栖居 · 全屋 3D 设计预览",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "documentSize": {
+        "width": 375,
+        "height": 812
+      },
+      "horizontalOverflow": 0,
+      "canvas": {
+        "width": 375,
+        "height": 752,
+        "backingWidth": 375,
+        "backingHeight": 752
+      },
+      "webgl": true,
+      "cameraDistance": 0,
+      "usableArea": "120.7 m²",
+      "interiorArea": "108.5 m²",
+      "areaBasis": "108.5㎡ 室内 + 12.2㎡ 阳台（不含电梯/公区）",
+      "sidebar": {
+        "left": -325,
+        "right": -15,
+        "width": 310
+      },
+      "roomButtons": 14,
+      "toggles": [
+        {
+          "label": "切换给排水",
+          "checked": "true"
+        },
+        {
+          "label": "切换强弱电",
+          "checked": "true"
+        },
+        {
+          "label": "切换空间标签",
+          "checked": "true"
+        }
+      ]
+    },
+    {
+      "label": "mobile-menu",
+      "visible": true,
+      "left": -325,
+      "right": -15
+    },
+    {
+      "label": "mobile-320",
+      "title": "栖居 · 全屋 3D 设计预览",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "documentSize": {
+        "width": 320,
+        "height": 740
+      },
+      "horizontalOverflow": 0,
+      "canvas": {
+        "width": 320,
+        "height": 680,
+        "backingWidth": 320,
+        "backingHeight": 680
+      },
+      "webgl": true,
+      "cameraDistance": 0,
+      "usableArea": "120.7 m²",
+      "interiorArea": "108.5 m²",
+      "areaBasis": "108.5㎡ 室内 + 12.2㎡ 阳台（不含电梯/公区）",
+      "sidebar": {
+        "left": -289,
+        "right": -14,
+        "width": 275
+      },
+      "roomButtons": 14,
+      "toggles": [
+        {
+          "label": "切换给排水",
+          "checked": "true"
+        },
+        {
+          "label": "切换强弱电",
+          "checked": "true"
+        },
+        {
+          "label": "切换空间标签",
+          "checked": "true"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

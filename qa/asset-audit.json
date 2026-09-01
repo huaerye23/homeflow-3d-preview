@@ -1,0 +1,143 @@
+{
+  "schema": "image-to-code.layers.v1",
+  "artboard_width": 750,
+  "reference_4k_long_edge": 3840,
+  "asset_count": 9,
+  "transparent_asset_count": 0,
+  "checks": [
+    {
+      "id": "structural-plan",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\structural-plan-750.png",
+      "expected_size": [
+        750,
+        560
+      ],
+      "actual_size": [
+        750,
+        560
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "structural-plan-4k",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\structural-plan-4k.png",
+      "expected_size": [
+        3840
+      ],
+      "actual_size": [
+        3840,
+        2865
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "official-huxing",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\official-huxing-750.png",
+      "expected_size": [
+        750,
+        490
+      ],
+      "actual_size": [
+        750,
+        490
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "official-huxing-4k",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\official-huxing-4k.png",
+      "expected_size": [
+        3840
+      ],
+      "actual_size": [
+        3840,
+        2507
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "official-furnished",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\official-furnished-750.png",
+      "expected_size": [
+        750,
+        807
+      ],
+      "actual_size": [
+        750,
+        807
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "official-furnished-4k",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\official-furnished-4k.png",
+      "expected_size": [
+        3840
+      ],
+      "actual_size": [
+        3569,
+        3840
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "key-west",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\key-west-4k.png",
+      "expected_size": [
+        2588,
+        3840
+      ],
+      "actual_size": [
+        2588,
+        3840
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "key-center",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\key-center-4k.png",
+      "expected_size": [
+        2470,
+        3840
+      ],
+      "actual_size": [
+        2470,
+        3840
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    },
+    {
+      "id": "key-east",
+      "asset": "D:\\XM\\Nx\\home\\public\\references\\key-east-4k.png",
+      "expected_size": [
+        2117,
+        3840
+      ],
+      "actual_size": [
+        2117,
+        3840
+      ],
+      "mode": "RGB",
+      "transparent_required": false,
+      "size_ok": true
+    }
+  ],
+  "passed": true,
+  "notes": "Official Fang.com huxing/furnished references plus structural CAD; 4K long edge is 3840."
+}

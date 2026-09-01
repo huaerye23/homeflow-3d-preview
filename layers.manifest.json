@@ -1,0 +1,196 @@
+{
+  "schema": "image-to-code.layers.v1",
+  "generated_from": "https://cs.newhouse.fang.com/loupan/2710200130/photo/d_house_1581048.htm",
+  "artboard_width": 750,
+  "reference_4k_long_edge": 3840,
+  "layers": [
+    {
+      "id": "structural-plan",
+      "type": "bitmap-reference",
+      "source_file": "D:\\XM\\Nx\\home\\sources\\structural-plan.png",
+      "source_size": {
+        "width": 1024,
+        "height": 764
+      },
+      "source_bbox": {
+        "x": 16,
+        "y": 22,
+        "width": 998,
+        "height": 724
+      },
+      "normalization": {
+        "target_width": 750,
+        "scale": 0.73242188,
+        "final_height": 560
+      },
+      "scaled_bbox": {
+        "x": 11.72,
+        "y": 16.11,
+        "width": 730.96,
+        "height": 530.27
+      },
+      "asset": "/references/structural-plan-750.png",
+      "asset_4k": "/references/structural-plan-4k.png",
+      "z_index": 1,
+      "transparent_required": false,
+      "notes": "原始结构与尺寸依据；矩形白底属于工程图本身。"
+    },
+    {
+      "id": "official-huxing",
+      "type": "bitmap-reference",
+      "source_file": "D:\\XM\\Nx\\home\\sources\\official-huxing.png",
+      "source_size": {
+        "width": 1400,
+        "height": 914
+      },
+      "source_bbox": {
+        "x": 3,
+        "y": 3,
+        "width": 1394,
+        "height": 908
+      },
+      "normalization": {
+        "target_width": 750,
+        "scale": 0.53571429,
+        "final_height": 490
+      },
+      "scaled_bbox": {
+        "x": 1.61,
+        "y": 1.61,
+        "width": 746.79,
+        "height": 486.43
+      },
+      "asset": "/references/official-huxing-750.png",
+      "asset_4k": "/references/official-huxing-4k.png",
+      "z_index": 1,
+      "transparent_required": false,
+      "notes": "房天下官方户型分析图，作为新底图。来源 https://cs.newhouse.fang.com/loupan/2710200130/photo/d_house_1581048.htm"
+    },
+    {
+      "id": "official-furnished",
+      "type": "bitmap-reference",
+      "source_file": "D:\\XM\\Nx\\home\\sources\\official-furnished.png",
+      "source_size": {
+        "width": 830,
+        "height": 893
+      },
+      "source_bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 830,
+        "height": 893
+      },
+      "normalization": {
+        "target_width": 750,
+        "scale": 0.90361446,
+        "final_height": 807
+      },
+      "scaled_bbox": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 750.0,
+        "height": 806.93
+      },
+      "asset": "/references/official-furnished-750.png",
+      "asset_4k": "/references/official-furnished-4k.png",
+      "z_index": 1,
+      "transparent_required": false,
+      "notes": "房天下官方「棠悦」142㎡ 生活场景A装修示意图，已裁户型本体并输出 4K。"
+    }
+  ],
+  "key_regions_4k": [
+    {
+      "id": "key-west",
+      "type": "bitmap-reference-4k",
+      "source_file": "D:\\XM\\Nx\\home\\sources\\official-huxing.png",
+      "source_bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 616,
+        "height": 914
+      },
+      "size": {
+        "width": 2588,
+        "height": 3840
+      },
+      "asset": "/references/key-west-4k.png",
+      "notes": "官方户型分析图关键区域 4K 放大，便于核对墙体、门洞与分区。"
+    },
+    {
+      "id": "key-center",
+      "type": "bitmap-reference-4k",
+      "source_file": "D:\\XM\\Nx\\home\\sources\\official-huxing.png",
+      "source_bbox": {
+        "x": 448,
+        "y": 0,
+        "width": 588,
+        "height": 914
+      },
+      "size": {
+        "width": 2470,
+        "height": 3840
+      },
+      "asset": "/references/key-center-4k.png",
+      "notes": "官方户型分析图关键区域 4K 放大，便于核对墙体、门洞与分区。"
+    },
+    {
+      "id": "key-east",
+      "type": "bitmap-reference-4k",
+      "source_file": "D:\\XM\\Nx\\home\\sources\\official-huxing.png",
+      "source_bbox": {
+        "x": 896,
+        "y": 0,
+        "width": 504,
+        "height": 914
+      },
+      "size": {
+        "width": 2117,
+        "height": 3840
+      },
+      "asset": "/references/key-east-4k.png",
+      "notes": "官方户型分析图关键区域 4K 放大，便于核对墙体、门洞与分区。"
+    }
+  ],
+  "derived_model": {
+    "ceiling_height_m": 2.83,
+    "model_extent_m": {
+      "width": 15.17,
+      "depth": 9.77
+    },
+    "calculated_partition_area_m2": 120.7,
+    "calculated_interior_area_m2": 112.7,
+    "calculated_balcony_area_m2": 8.0,
+    "model_envelope_area_m2": 148.2,
+    "area_basis": "sum of non-overlapping interior and balcony width x depth rectangles; foyer overlaps living and is excluded; elevator/common-area void excluded",
+    "orientation": "north-up official huxing; structural CAD is south-up and flipped before modeling",
+    "measurement_status": "concept preview; site re-measurement required before construction"
+  },
+  "outputs": {
+    "structural_4k": [
+      3840,
+      2865
+    ],
+    "official_huxing_4k": [
+      3840,
+      2507
+    ],
+    "official_furnished_4k": [
+      3569,
+      3840
+    ],
+    "key_regions": {
+      "key-west": [
+        2588,
+        3840
+      ],
+      "key-center": [
+        2470,
+        3840
+      ],
+      "key-east": [
+        2117,
+        3840
+      ]
+    }
+  }
+}
