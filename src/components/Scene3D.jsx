@@ -23,6 +23,52 @@ const COLORS = {
   outerWall: "#d8d0c3",
 };
 
+// Line2 is a Mesh; Three.js culls FrontSide meshes when a parent scale has a
+// negative determinant. This scene flips Z with scale={[1, 1, -1]}, so fat
+// lines (cables, pipes, door swings, dims) vanish unless they are DoubleSide.
+function SceneLine(props) {
+  return <Line side={THREE.DoubleSide} {...props} />;
+}
+
+const Y_UP = new THREE.Vector3(0, 1, 0);
+
+function RoutePath({ points, color, radius }) {
+  const { segments, joints } = useMemo(() => {
+    const segments = [];
+    for (let i = 0; i < points.length - 1; i += 1) {
+      const start = new THREE.Vector3(...points[i]);
+      const end = new THREE.Vector3(...points[i + 1]);
+      const length = start.distanceTo(end);
+      if (length < 1e-4) continue;
+      const quaternion = new THREE.Quaternion().setFromUnitVectors(Y_UP, end.clone().sub(start).normalize());
+      segments.push({
+        key: `seg-${i}`,
+        position: start.clone().lerp(end, 0.5).toArray(),
+        quaternion,
+        length,
+      });
+    }
+    return { segments, joints: points };
+  }, [points]);
+
+  return (
+    <group>
+      {segments.map((segment) => (
+        <mesh key={segment.key} position={segment.position} quaternion={segment.quaternion} castShadow>
+          <cylinderGeometry args={[radius, radius, segment.length, 12]} />
+          <meshStandardMaterial color={color} roughness={0.38} metalness={0.18} emissive={color} emissiveIntensity={0.16} />
+        </mesh>
+      ))}
+      {joints.map((point, index) => (
+        <mesh key={`joint-${index}`} position={point} castShadow>
+          <sphereGeometry args={[radius, 12, 12]} />
+          <meshStandardMaterial color={color} roughness={0.38} metalness={0.18} emissive={color} emissiveIntensity={0.16} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
 function Box({ position, args, color, radius = 0.05, rotation, ...props }) {
   return (
     <RoundedBox
@@ -77,15 +123,15 @@ function Annotations() {
   const chipStyle = { pointerEvents: "none" };
   return (
     <group name="annotations">
-      <Line points={[[0, 0.06, -0.55], [15.17, 0.06, -0.55]]} color={dimColor} lineWidth={1.4} />
-      <Line points={[[0, 0.06, -0.72], [0, 0.06, -0.38]]} color={dimColor} lineWidth={1.4} />
-      <Line points={[[15.17, 0.06, -0.72], [15.17, 0.06, -0.38]]} color={dimColor} lineWidth={1.4} />
+      <SceneLine points={[[0, 0.06, -0.55], [15.17, 0.06, -0.55]]} color={dimColor} lineWidth={1.4} />
+      <SceneLine points={[[0, 0.06, -0.72], [0, 0.06, -0.38]]} color={dimColor} lineWidth={1.4} />
+      <SceneLine points={[[15.17, 0.06, -0.72], [15.17, 0.06, -0.38]]} color={dimColor} lineWidth={1.4} />
       <Html position={[7.585, 0.06, -1.0]} center zIndexRange={[3, 0]} style={chipStyle}>
         <div className="dim-chip">15.17 m</div>
       </Html>
-      <Line points={[[-0.55, 0.06, 0], [-0.55, 0.06, 9.77]]} color={dimColor} lineWidth={1.4} />
-      <Line points={[[-0.72, 0.06, 0], [-0.38, 0.06, 0]]} color={dimColor} lineWidth={1.4} />
-      <Line points={[[-0.72, 0.06, 9.77], [-0.38, 0.06, 9.77]]} color={dimColor} lineWidth={1.4} />
+      <SceneLine points={[[-0.55, 0.06, 0], [-0.55, 0.06, 9.77]]} color={dimColor} lineWidth={1.4} />
+      <SceneLine points={[[-0.72, 0.06, 0], [-0.38, 0.06, 0]]} color={dimColor} lineWidth={1.4} />
+      <SceneLine points={[[-0.72, 0.06, 9.77], [-0.38, 0.06, 9.77]]} color={dimColor} lineWidth={1.4} />
       <Html position={[-1.05, 0.06, 4.885]} center zIndexRange={[3, 0]} style={chipStyle}>
         <div className="dim-chip">9.77 m</div>
       </Html>
@@ -207,8 +253,8 @@ function DoorUnit({ door, heightScale }) {
           <meshStandardMaterial color={door.type === "entry" ? "#5c554a" : "#a8865f"} roughness={0.55} />
         </mesh>
       )}
-      <Line points={arcPoints} color="#9d9184" lineWidth={1.6} transparent opacity={0.8} />
-      <Line
+      <SceneLine points={arcPoints} color="#9d9184" lineWidth={1.6} transparent opacity={0.8} />
+      <SceneLine
         points={[
           [hingeX, 0.065, hingeZ],
           [arcPoints[0][0], 0.065, arcPoints[0][2]],
@@ -249,7 +295,7 @@ function RoomFloor({ room, selected, onSelect, selectable }) {
         </mesh>
       ))}
       {selected && roomRects(room).map((rect, index) => (
-        <Line
+        <SceneLine
           key={`${room.id}-sel-${index}`}
           points={[
             [rect.x + 0.04, 0.09, rect.z + 0.04],
@@ -288,13 +334,11 @@ function WaterSystem() {
   return (
     <group name="water-system">
       {waterRoutes.map((route) => (
-        <Line
+        <RoutePath
           key={route.id}
           points={route.points.map(([x, z]) => [x, route.y, z])}
           color={route.color}
-          lineWidth={route.id.startsWith("drain") ? 6 : 3.6}
-          transparent
-          opacity={0.96}
+          radius={route.id.startsWith("drain") ? 0.045 : 0.028}
         />
       ))}
       {waterFixtures.map((fixture) => (
@@ -318,13 +362,11 @@ function ElectricalSystem({ wallHeightScale }) {
   return (
     <group name="electrical-system">
       {electricalRoutes.map((route, index) => (
-        <Line
+        <RoutePath
           key={route.id}
           points={route.points.map(([x, z]) => [x, Math.min(2.35 - index * 0.035, cutY - 0.08), z])}
           color={route.color}
-          lineWidth={2.5}
-          transparent
-          opacity={0.92}
+          radius={0.02}
         />
       ))}
       {lightPoints.map((light) => (
