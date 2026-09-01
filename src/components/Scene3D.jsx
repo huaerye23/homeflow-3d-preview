@@ -593,7 +593,7 @@ function SceneContent({ layers, mode, wallScale, selectedRoom, onSelectRoom, vie
       <group position={[-MODEL_SIZE.width / 2, 0, MODEL_SIZE.depth / 2]} scale={[1, 1, -1]}>
         <mesh position={[MODEL_SIZE.width / 2, -0.055, MODEL_SIZE.depth / 2]} receiveShadow>
           <boxGeometry args={[MODEL_SIZE.width + 0.4, 0.12, MODEL_SIZE.depth + 0.4]} />
-          <meshStandardMaterial color="#cbc3b6" roughness={0.96} />
+          <meshStandardMaterial color="#d5cfc4" roughness={0.96} />
         </mesh>
 
         {rooms.map((room) => (
@@ -610,16 +610,16 @@ function SceneContent({ layers, mode, wallScale, selectedRoom, onSelectRoom, vie
 
       <mesh position={[0, -0.14, 0]} receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[60, 60]} />
-        <meshStandardMaterial color="#d1c9bc" roughness={1} />
+        <meshStandardMaterial color="#ded8cd" roughness={1} />
       </mesh>
       <Grid
         position={[0, -0.07, 0]}
         cellSize={0.5}
         cellThickness={0.55}
-        cellColor="#bbb1a2"
+        cellColor="#c6bdae"
         sectionSize={2.5}
         sectionThickness={1.1}
-        sectionColor="#a69a88"
+        sectionColor="#b1a591"
         fadeDistance={34}
         fadeStrength={1.5}
         infiniteGrid

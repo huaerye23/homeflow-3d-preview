@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  Armchair,
+  Bath,
+  BedDouble,
   Compass,
   DoorOpen,
+  Footprints,
   Download,
   Droplets,
   Image as ImageIcon,
@@ -16,8 +18,11 @@ import {
   Rotate3D,
   Ruler,
   SlidersHorizontal,
+  Sofa,
   Sparkles,
   Tag,
+  Trees,
+  Utensils,
   X,
   Zap,
   ZoomIn,
@@ -57,10 +62,13 @@ const RAIL_COUNTS = [
 const USABLE_AREA_VALUE = Number.parseFloat(projectStats.usableArea);
 
 const roomIcon = (id) => {
-  if (id.includes("bath") || id === "kitchen") return Droplets;
-  if (["master", "child", "elder", "north-bed"].includes(id)) return Layers3;
-  if (["living", "dining"].includes(id)) return Armchair;
-  return Compass;
+  if (id.includes("bath")) return Bath;
+  if (id === "kitchen") return Utensils;
+  if (["master", "child", "elder", "north-bed"].includes(id)) return BedDouble;
+  if (["living", "dining"].includes(id)) return Sofa;
+  if (id.includes("balcony")) return Trees;
+  if (id === "foyer") return DoorOpen;
+  return Footprints;
 };
 
 function Toggle({ enabled, onClick, label }) {
