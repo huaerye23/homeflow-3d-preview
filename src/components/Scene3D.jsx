@@ -568,8 +568,8 @@ function SceneContent({ layers, mode, wallScale, selectedRoom, onSelectRoom, vie
 
   return (
     <>
-      <color attach="background" args={["#e9e4da"]} />
-      <fog attach="fog" args={["#e9e4da", 20, 42]} />
+      <color attach="background" args={["#e6ddcd"]} />
+      <fog attach="fog" args={["#e6ddcd", 20, 42]} />
       <SoftShadows size={16} samples={10} focus={0.55} />
       <ambientLight intensity={0.62} />
       <hemisphereLight args={["#fff6e4", "#96a398", 1.05]} />
