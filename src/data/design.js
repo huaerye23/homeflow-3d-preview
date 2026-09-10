@@ -54,7 +54,7 @@ export const walls = [
   { a: [0, 0], b: [15.17, 0], kind: "outer" },
   { a: [15.17, 0], b: [15.17, 5.67], kind: "outer" },
   { a: [15.17, 5.67], b: [12.08, 5.67], kind: "outer" },
-  { a: [12.08, 5.67], b: [12.08, 8.26], kind: "outer" },
+  { a: [12.08, 6.87], b: [12.08, 8.26], kind: "outer" },
   { a: [12.08, 8.26], b: [10.3, 8.26], kind: "outer" },
   { a: [10.3, 8.26], b: [10.3, 9.77], kind: "outer" },
   { a: [10.3, 9.77], b: [1.8, 9.77], kind: "outer" },
@@ -203,6 +203,8 @@ export const doors = [
   { id: "door-bath-east", name: "东卫门", x: 13.42, z: 3.84, width: 0.8, rot: 0, hinge: 1, swing: 1, height: 2.05 },
   { id: "door-balcony-west", name: "生活阳台门", x: 4.78, z: 9.02, width: 0.8, rot: Math.PI / 2, hinge: -1, swing: -1, height: 2.05 },
   { id: "door-balcony-living", name: "景观阳台推拉门", x: 8.3, z: 8.26, width: 1.8, rot: 0, height: 2.2, type: "slide" },
+  // East kitchen wall at the elevator-hall re-entrant corner; double leaf opens west into the open kitchen.
+  { id: "door-entry", name: "入户门", x: 12.08, z: 6.27, width: 1.2, rot: Math.PI / 2, hinge: -1, swing: -1, height: 2.05, type: "entry", leaves: 2 },
 ];
 
 // Entry door on the east kitchen wall; offsets taken from the structural plan.
