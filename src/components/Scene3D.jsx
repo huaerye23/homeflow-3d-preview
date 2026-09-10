@@ -212,58 +212,77 @@ function DoorUnit({ door, heightScale }) {
     );
   }
 
-  const hingeX = door.x + u[0] * door.hinge * (door.width / 2);
-  const hingeZ = door.z + u[1] * door.hinge * (door.width / 2);
   const openAngle = 0.92;
-  const dirX = -u[0] * door.hinge * Math.cos(openAngle) + n[0] * door.swing * Math.sin(openAngle);
-  const dirZ = -u[1] * door.hinge * Math.cos(openAngle) + n[1] * door.swing * Math.sin(openAngle);
   const leafH = Math.min(door.height, cutY) - 0.04;
-  const leafLength = door.width - 0.06;
-  const arcRadius = door.width - 0.04;
-  const arcPoints = Array.from({ length: 13 }).map((_, index) => {
-    const angle = (index / 12) * 1.35;
-    return [
-      hingeX + (-u[0] * door.hinge * Math.cos(angle) + n[0] * door.swing * Math.sin(angle)) * arcRadius,
-      0.065,
-      hingeZ + (-u[1] * door.hinge * Math.cos(angle) + n[1] * door.swing * Math.sin(angle)) * arcRadius,
-    ];
-  });
+  const frameColor = door.type === "entry" ? "#5c554a" : "#7b6a55";
+  const leafSpecs = door.leaves === 2
+    ? [
+        { hinge: -1, x: door.x - u[0] * (door.width / 4), z: door.z - u[1] * (door.width / 4), width: door.width / 2 },
+        { hinge: 1, x: door.x + u[0] * (door.width / 4), z: door.z + u[1] * (door.width / 4), width: door.width / 2 },
+      ]
+    : [{ hinge: door.hinge, x: door.x, z: door.z, width: door.width }];
 
   return (
     <group>
       {[-1, 1].map((side) => (
         <mesh key={side} position={[door.x + u[0] * side * (door.width / 2 + 0.035), frameH / 2, door.z + u[1] * side * (door.width / 2 + 0.035)]} castShadow>
           <boxGeometry args={jambSize} />
-          <meshStandardMaterial color="#7b6a55" roughness={0.62} />
+          <meshStandardMaterial color={frameColor} roughness={0.62} />
         </mesh>
       ))}
       {showLintel && (
         <mesh position={[door.x, door.height + Math.min(0.14, cutY - door.height) / 2, door.z]} rotation={[0, -door.rot, 0]}>
           <boxGeometry args={[door.width + 0.14, Math.min(0.14, cutY - door.height), 0.15]} />
-          <meshStandardMaterial color="#7b6a55" roughness={0.62} />
+          <meshStandardMaterial color={frameColor} roughness={0.62} />
         </mesh>
       )}
-      {leafH > 0.34 && (
-        <mesh
-          position={[hingeX + dirX * (leafLength / 2), leafH / 2 + 0.02, hingeZ + dirZ * (leafLength / 2)]}
-          rotation={[0, -Math.atan2(dirZ, dirX), 0]}
-          castShadow
-        >
-          <boxGeometry args={[leafLength, leafH, 0.045]} />
-          <meshStandardMaterial color={door.type === "entry" ? "#5c554a" : "#a8865f"} roughness={0.55} />
+      {door.type === "entry" && (
+        <mesh position={[door.x, 0.02, door.z]} rotation={[0, -door.rot, 0]}>
+          <boxGeometry args={[door.width + 0.04, 0.04, 0.28]} />
+          <meshStandardMaterial color="#6b6358" roughness={0.7} />
         </mesh>
       )}
-      <SceneLine points={arcPoints} color="#9d9184" lineWidth={1.6} transparent opacity={0.8} />
-      <SceneLine
-        points={[
-          [hingeX, 0.065, hingeZ],
-          [arcPoints[0][0], 0.065, arcPoints[0][2]],
-        ]}
-        color="#9d9184"
-        lineWidth={1.6}
-        transparent
-        opacity={0.8}
-      />
+      {leafSpecs.map((leaf, index) => {
+        const hingeX = leaf.x + u[0] * leaf.hinge * (leaf.width / 2);
+        const hingeZ = leaf.z + u[1] * leaf.hinge * (leaf.width / 2);
+        const dirX = -u[0] * leaf.hinge * Math.cos(openAngle) + n[0] * door.swing * Math.sin(openAngle);
+        const dirZ = -u[1] * leaf.hinge * Math.cos(openAngle) + n[1] * door.swing * Math.sin(openAngle);
+        const leafLength = leaf.width - 0.06;
+        const arcRadius = leaf.width - 0.04;
+        const arcPoints = Array.from({ length: 13 }).map((_, step) => {
+          const angle = (step / 12) * 1.35;
+          return [
+            hingeX + (-u[0] * leaf.hinge * Math.cos(angle) + n[0] * door.swing * Math.sin(angle)) * arcRadius,
+            0.065,
+            hingeZ + (-u[1] * leaf.hinge * Math.cos(angle) + n[1] * door.swing * Math.sin(angle)) * arcRadius,
+          ];
+        });
+        return (
+          <group key={`leaf-${index}`}>
+            {leafH > 0.34 && (
+              <mesh
+                position={[hingeX + dirX * (leafLength / 2), leafH / 2 + 0.02, hingeZ + dirZ * (leafLength / 2)]}
+                rotation={[0, -Math.atan2(dirZ, dirX), 0]}
+                castShadow
+              >
+                <boxGeometry args={[leafLength, leafH, door.type === "entry" ? 0.055 : 0.045]} />
+                <meshStandardMaterial color={door.type === "entry" ? "#5c554a" : "#a8865f"} roughness={0.55} />
+              </mesh>
+            )}
+            <SceneLine points={arcPoints} color="#9d9184" lineWidth={1.6} transparent opacity={0.8} />
+            <SceneLine
+              points={[
+                [hingeX, 0.065, hingeZ],
+                [arcPoints[0][0], 0.065, arcPoints[0][2]],
+              ]}
+              color="#9d9184"
+              lineWidth={1.6}
+              transparent
+              opacity={0.8}
+            />
+          </group>
+        );
+      })}
     </group>
   );
 }
